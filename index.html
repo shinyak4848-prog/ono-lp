@@ -1,401 +1,992 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>小野塗装｜地元密着の外壁塗装専門店【行橋・苅田・中津エリア】</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; line-height: 1.7; background: #fff; }
-    a { text-decoration: none; color: inherit; }
-    :root {
-      --blue: #1a6bb5; --blue-dark: #0f4f8c; --blue-light: #e8f2fc;
-      --orange: #f07800; --yellow: #ffc107;
-      --gray-bg: #f7f8fa; --gray-line: #e0e5eb;
-      --text: #333; --text-light: #666; --line-green: #06C755;
-    }
-    /* ヘッダー */
-    header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 3px solid var(--blue); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
-    .header-inner { max-width: 1100px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    .logo-wrap { display: flex; align-items: center; gap: 10px; }
-    .logo-icon { width: 44px; height: 44px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
-    .logo-text small { font-size: .7rem; color: var(--text-light); display: block; }
-    .logo-text strong { font-size: 1.3rem; color: var(--blue); }
-    .header-nav { display: flex; gap: 20px; font-size: .85rem; }
-    .header-nav a { color: var(--text); font-weight: 500; }
-    .header-nav a:hover { color: var(--blue); }
-    .header-cta { background: var(--line-green); color: #fff; font-weight: bold; font-size: .9rem; padding: 12px 22px; border-radius: 6px; display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 3px 10px rgba(6,199,85,0.35); transition: all .2s; }
-    .header-cta:hover { background: #05a847; transform: translateY(-1px); }
-    .header-cta svg { width: 20px; height: 20px; }
-    /* ヒーロー */
-    .hero { background: linear-gradient(135deg, #e8f2fc 0%, #f0f6ff 60%, #fff 100%); padding: 60px 24px 0; overflow: hidden; }
-    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-    .hero-text { padding-bottom: 60px; }
-    .hero-label { display: inline-block; background: var(--orange); color: #fff; font-size: .8rem; font-weight: bold; padding: 5px 16px; border-radius: 3px; margin-bottom: 20px; }
-    .hero-catch { font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: bold; line-height: 1.4; margin-bottom: 8px; color: #1a1a1a; }
-    .hero-catch em { color: var(--blue); font-style: normal; border-bottom: 4px solid var(--yellow); }
-    .hero-sub { color: var(--text-light); font-size: .95rem; margin-bottom: 24px; }
-    .hero-badges { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
-    .hero-badge { background: #fff; border: 2px solid var(--blue-light); border-radius: 50px; padding: 7px 14px; font-size: .8rem; font-weight: bold; color: var(--blue); display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-    .line-cta-box { background: var(--line-green); border-radius: 10px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 20px rgba(6,199,85,0.35); transition: all .2s; cursor: pointer; }
-    .line-cta-box:hover { background: #05a847; transform: translateY(-2px); }
-    .line-cta-box svg { width: 34px; height: 34px; flex-shrink: 0; }
-    .line-cta-text small { color: rgba(255,255,255,0.85); font-size: .72rem; display: block; }
-    .line-cta-text strong { color: #fff; font-size: 1.1rem; display: block; }
-    .line-cta-arrow { margin-left: auto; color: #fff; font-size: 1.6rem; font-weight: bold; }
-    .hero-note { font-size: .78rem; color: var(--text-light); margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
-    .hero-note span::before { content: '✓ '; color: var(--line-green); font-weight: bold; }
-    .hero-image-wrap { border-radius: 16px 16px 0 0; overflow: hidden; box-shadow: 0 8px 40px rgba(26,107,181,0.2); position: relative; }
-    .hero-house-img { width: 100%; height: 420px; background: linear-gradient(160deg, #b8d4f0 0%, #7aaed8 40%, #4a8fc4 100%); display: flex; align-items: center; justify-content: center; font-size: 9rem; position: relative; }
-    .hero-house-img::after { content: '施工写真を配置'; position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.4); color: #fff; font-size: .75rem; padding: 4px 10px; border-radius: 4px; }
-    .hero-balloon { position: absolute; top: 24px; left: 0; background: var(--orange); color: #fff; font-size: .82rem; font-weight: bold; padding: 8px 20px 8px 16px; border-radius: 0 24px 24px 0; }
-    /* 共通 */
-    section { padding: 72px 24px; }
-    .container { max-width: 1100px; margin: 0 auto; }
-    .sec-header { text-align: center; margin-bottom: 48px; }
-    .sec-label { display: inline-block; color: var(--blue); font-size: .78rem; font-weight: bold; border-bottom: 2px solid var(--blue); padding-bottom: 2px; margin-bottom: 10px; letter-spacing: .12em; }
-    .sec-title { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: bold; color: #1a1a1a; line-height: 1.4; }
-    .sec-title em { color: var(--blue); font-style: normal; }
-    /* メリット */
-    .merit { background: var(--gray-bg); }
-    .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .merit-card { background: #fff; border-radius: 12px; padding: 32px 24px; text-align: center; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 4px solid var(--blue); transition: transform .2s, box-shadow .2s; }
-    .merit-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(26,107,181,0.15); }
-    .merit-num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--blue); color: #fff; font-size: 1.2rem; font-weight: bold; border-radius: 50%; margin-bottom: 14px; }
-    .merit-icon { font-size: 3.2rem; margin-bottom: 12px; }
-    .merit-card h3 { font-size: 1.05rem; color: var(--blue); font-weight: bold; margin-bottom: 10px; }
-    .merit-card p { font-size: .88rem; color: var(--text-light); }
-    /* 選ばれる理由 */
-    .reason { background: #fff; }
-    .reason-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
-    .reason-card { text-align: center; padding: 24px 12px; border: 2px solid var(--gray-line); border-radius: 10px; transition: border-color .2s, box-shadow .2s; }
-    .reason-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(26,107,181,0.12); }
-    .reason-icon { font-size: 2.4rem; margin-bottom: 12px; }
-    .reason-card h3 { font-size: .84rem; font-weight: bold; color: var(--blue); line-height: 1.5; }
-    /* 施工の流れ */
-    .flow { background: var(--gray-bg); }
-    .flow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; position: relative; }
-    .flow-steps::before { content: ''; position: absolute; top: 28px; left: 8%; right: 8%; height: 3px; background: var(--blue-light); z-index: 0; }
-    .flow-step { text-align: center; padding: 0 6px; position: relative; z-index: 1; }
-    .flow-step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; margin: 0 auto 10px; border: 4px solid #fff; box-shadow: 0 2px 10px rgba(26,107,181,0.3); }
-    .flow-step-icon { font-size: 1.6rem; margin-bottom: 8px; }
-    .flow-step h3 { font-size: .78rem; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
-    .flow-step p { font-size: .7rem; color: var(--text-light); line-height: 1.5; }
-    .flow-note { text-align: center; margin-top: 24px; font-size: .82rem; color: var(--text-light); }
-    /* お客様の声 */
-    .voice { background: #fff; }
-    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .voice-card { background: var(--gray-bg); border-radius: 12px; padding: 24px; border-top: 4px solid var(--yellow); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    .voice-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 10px; letter-spacing: 2px; }
-    .voice-text { font-size: .87rem; color: var(--text); margin-bottom: 16px; line-height: 1.75; }
-    .voice-author { display: flex; align-items: center; gap: 10px; }
-    .voice-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-    .voice-name { font-size: .82rem; font-weight: bold; }
-    .voice-area { font-size: .74rem; color: var(--text-light); }
-    /* エリア */
-    .area { background: var(--gray-bg); }
-    .area-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
-    .area-tag { background: var(--blue); color: #fff; font-size: .88rem; font-weight: bold; padding: 8px 20px; border-radius: 50px; }
-    .area-note { text-align: center; color: var(--text-light); font-size: .82rem; }
-    /* FAQ */
-    .faq { background: #fff; }
-    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-    .faq-item { background: var(--gray-bg); border-radius: 10px; overflow: hidden; }
-    .faq-q { padding: 18px 22px; font-weight: bold; display: flex; align-items: flex-start; gap: 12px; border-left: 4px solid var(--blue); background: #fff; }
-    .faq-q-label { background: var(--blue); color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .82rem; font-weight: bold; flex-shrink: 0; }
-    .faq-a { padding: 14px 22px 18px 62px; color: var(--text-light); font-size: .9rem; }
-    /* 最終CTA */
-    .final-cta { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); text-align: center; padding: 72px 24px; }
-    .final-cta h2 { color: #fff; font-size: clamp(1.3rem, 2.5vw, 1.9rem); margin-bottom: 10px; }
-    .final-cta p { color: rgba(255,255,255,0.8); margin-bottom: 28px; }
-    .cta-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
-    .cta-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: .84rem; padding: 7px 18px; border-radius: 50px; }
-    .cta-badge::before { content: '✓ '; color: var(--line-green); font-weight: bold; }
-    .cta-line-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--line-green); color: #fff; font-size: 1.15rem; font-weight: bold; padding: 20px 48px; border-radius: 50px; box-shadow: 0 6px 24px rgba(6,199,85,0.5); transition: all .2s; }
-    .cta-line-btn:hover { background: #05a847; transform: translateY(-3px); }
-    .cta-line-btn svg { width: 28px; height: 28px; }
-    /* 会社情報 */
-    .company { background: var(--gray-bg); }
-    .company-table { width: 100%; max-width: 640px; margin: 0 auto; border-collapse: collapse; }
-    .company-table th, .company-table td { padding: 14px 18px; border-bottom: 1px solid var(--gray-line); text-align: left; font-size: .92rem; }
-    .company-table th { color: var(--blue); font-weight: bold; width: 130px; white-space: nowrap; }
-    /* フッター */
-    footer { background: #1a1a2e; color: rgba(255,255,255,0.55); padding: 40px 24px 24px; }
-    .footer-inner { max-width: 1100px; margin: 0 auto; }
-    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 28px; }
-    .footer-logo strong { color: #fff; font-size: 1.15rem; }
-    .footer-logo small { color: rgba(255,255,255,0.35); font-size: .76rem; display: block; margin-top: 4px; }
-    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
-    .footer-links a { color: rgba(255,255,255,0.45); font-size: .82rem; }
-    .footer-links a:hover { color: #fff; }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; text-align: center; font-size: .76rem; }
-    /* 固定LINEボタン */
-    .fixed-line-btn { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 200; background: var(--line-green); color: #fff; font-weight: bold; font-size: .95rem; padding: 14px 28px; border-radius: 50px; display: flex; align-items: center; gap: 9px; box-shadow: 0 4px 24px rgba(6,199,85,0.5); white-space: nowrap; transition: all .2s; }
-    .fixed-line-btn:hover { background: #05a847; transform: translateX(-50%) translateY(-2px); }
-    .fixed-line-btn svg { width: 22px; height: 22px; }
-    /* レスポンシブ */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-image-wrap { display: none; }
-      .hero-text { padding-bottom: 40px; }
-      .merit-grid, .voice-grid { grid-template-columns: 1fr; }
-      .reason-grid { grid-template-columns: repeat(3, 1fr); }
-      .flow-steps { grid-template-columns: repeat(3, 1fr); }
-      .flow-steps::before { display: none; }
-      .header-nav { display: none; }
-    }
-    @media (max-width: 600px) {
-      .reason-grid { grid-template-columns: repeat(2, 1fr); }
-      .flow-steps { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>小野塗装｜外壁・屋根の塗り替えで10年後も安心できる我が家に｜福岡・大分</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Zen+Maru+Gothic:wght@500;700;900&display=swap">
+<style>
+  :root{
+    --navy:#1f3756;
+    --navy-d:#152744;
+    --navy-l:#e9eef5;
+    --gold:#c89854;
+    --ink:#222;
+    --ink-2:#444;
+    --ink-3:#777;
+    --paper:#f7f1e3;
+    --paper-2:#ede4c9;
+    --line:#e3dcc4;
+    --line-green:#06c755;
+    --line-green-d:#04a043;
+    --bad:#d23c2e;
+    --mincho:'Shippori Mincho',serif;
+    --maru:'Zen Maru Gothic','Noto Sans JP',sans-serif;
+    --sans:'Noto Sans JP',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:var(--maru);
+    color:var(--ink);
+    background:#d8cfb8;
+    font-size:14px;line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5{margin:0;font-weight:800;}
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  button{font:inherit;cursor:pointer;border:none;background:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .topbar{
+    background:var(--navy-d);color:#dde3ee;
+    text-align:center;font-size:12px;padding:6px 16px;font-family:var(--maru);
+  }
+  .page{
+    max-width:1080px;margin:0 auto;background:var(--paper);
+    display:grid;grid-template-columns:1fr 270px;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.18);
+  }
+  .main{min-width:0;}
+  .side{
+    background:var(--navy);color:#fff;
+    position:sticky;top:0;align-self:start;
+    height:100vh;overflow-y:auto;padding:18px 16px;
+  }
+  @media(max-width:880px){
+    .page{grid-template-columns:1fr;}
+    .side{position:static;height:auto;}
+  }
+
+  /* ───── HERO ───── */
+  .hero{
+    background:#fff;padding:18px 26px 22px;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-tag{
+    display:inline-block;font-size:12px;color:var(--ink-2);font-family:var(--mincho);
+    border-bottom:1px solid var(--ink-3);padding-bottom:2px;margin-bottom:14px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:center;}
+  @media(max-width:680px){.hero-grid{grid-template-columns:1fr;}}
+  .hero-copy h1{
+    font-family:var(--mincho);font-weight:700;color:var(--navy);
+    font-size:24px;line-height:1.5;letter-spacing:.02em;
+  }
+  .hero-copy h1 .l1{display:block;font-size:24px;}
+  .hero-copy h1 .l2{display:block;font-size:42px;font-weight:800;line-height:1.2;margin:4px 0;letter-spacing:.04em;}
+  .hero-copy h1 .l3{display:block;font-size:42px;font-weight:800;line-height:1.2;letter-spacing:.04em;}
+  .hero-copy h1 em{font-style:normal;background:linear-gradient(transparent 60%,#ffe06a 60%);padding:0 .08em;}
+  .hero-copy .lead{
+    font-family:var(--maru);font-size:13px;color:var(--ink-2);line-height:1.85;margin-top:14px;
+  }
+  .hero-copy .lead .direct{
+    color:var(--bad);font-weight:900;font-size:16px;
+    border-bottom:2px dotted var(--bad);
+  }
+  .hero-badges{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap;}
+  .hbadge{
+    width:90px;height:90px;border-radius:99px;
+    background:var(--navy);color:#fff;
+    border:2px solid var(--gold);
+    display:grid;place-items:center;text-align:center;
+    font-family:var(--mincho);font-weight:700;font-size:11px;line-height:1.4;
+    padding:6px;position:relative;
+  }
+  .hbadge .ic{margin-bottom:2px;}
+  .hbadge.green{background:var(--line-green);border-color:#fff;}
+  .hbadge svg{display:block;margin:0 auto;}
+
+  /* hero illustration */
+  .hero-illust{
+    position:relative;aspect-ratio:5/4;border-radius:4px;overflow:hidden;
+    background:#e8e4d6;
+  }
+  .speech{
+    position:absolute;top:14px;left:14px;z-index:5;
+    background:#fff;border-radius:14px;padding:8px 12px;
+    font-family:var(--mincho);font-weight:700;font-size:12px;color:var(--ink);
+    box-shadow:0 4px 10px -4px rgba(0,0,0,.25);
+    line-height:1.5;
+  }
+  .speech::after{
+    content:"";position:absolute;bottom:-6px;left:30px;
+    border:6px solid transparent;border-top-color:#fff;
+  }
+  .speech b{color:var(--bad);}
+  .name-tag{
+    position:absolute;bottom:10px;right:12px;z-index:5;
+    background:rgba(31,55,86,.85);color:#fff;
+    font-family:var(--mincho);font-size:11px;font-weight:700;
+    padding:3px 10px;border-radius:3px;letter-spacing:.05em;
+  }
+
+  /* ───── BELT ───── */
+  .belt{
+    text-align:center;padding:20px 16px 14px;background:var(--paper);
+    position:relative;
+  }
+  .belt small{
+    display:block;font-family:var(--mincho);font-size:12px;color:var(--ink-3);
+    letter-spacing:.1em;margin-bottom:4px;
+  }
+  .belt small::before,.belt small::after{content:"〜 ";}
+  .belt small::after{content:" 〜";}
+  .belt h2{
+    font-family:var(--mincho);font-weight:700;font-size:14px;color:var(--ink-2);
+  }
+  .belt-deco{
+    display:flex;align-items:center;justify-content:center;gap:14px;margin-top:10px;
+  }
+  .belt-deco::before,.belt-deco::after{
+    content:"";width:80px;height:1px;background:var(--gold);
+  }
+  .belt-deco span{font-family:var(--mincho);color:var(--gold);font-size:11px;letter-spacing:.2em;}
+
+  /* ───── Section base ───── */
+  section.s{padding:30px 26px;}
+  .s-title{text-align:center;margin-bottom:18px;}
+  .s-title .small{font-family:var(--mincho);font-size:12px;color:var(--ink-3);letter-spacing:.1em;}
+  .s-title h3{
+    font-family:var(--mincho);font-weight:700;color:var(--navy);
+    font-size:24px;line-height:1.5;letter-spacing:.04em;margin-top:4px;
+  }
+  .s-title h3 em{font-style:normal;color:var(--bad);}
+  .s-title .lead{font-size:13px;color:var(--ink-2);line-height:1.85;margin-top:8px;}
+
+  /* WHY 3 cards */
+  .why-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;
+  }
+  @media(max-width:680px){.why-grid{grid-template-columns:1fr;}}
+  .why-c{
+    background:#fff;border:1px solid var(--line);border-radius:8px;
+    padding:18px 14px;text-align:center;
+  }
+  .why-c .ic{margin:0 auto 10px;}
+  .why-c h4{font-family:var(--mincho);font-size:15px;color:var(--navy);margin-bottom:6px;}
+  .why-c p{font-size:12px;color:var(--ink-2);line-height:1.7;text-align:left;}
+
+  /* CTA box (white) */
+  .cta-box{
+    background:#fff;border:1px dashed var(--gold);border-radius:8px;
+    padding:18px;text-align:center;margin-top:22px;
+  }
+  .cta-box .copy{
+    font-family:var(--mincho);font-size:14px;font-weight:700;color:var(--ink);
+    margin-bottom:12px;line-height:1.7;
+  }
+  .btn-line{
+    background:var(--line-green);color:#fff;border-radius:8px;
+    padding:14px 22px;display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mincho);font-weight:800;font-size:16px;letter-spacing:.05em;
+    box-shadow:0 4px 0 var(--line-green-d);
+    transition:transform .1s,box-shadow .1s;
+  }
+  .btn-line:hover{transform:translateY(2px);box-shadow:0 2px 0 var(--line-green-d);}
+  .btn-line svg{width:22px;height:22px;flex:0 0 22px;}
+  .btn-line .ribbon{
+    background:#ffe53b;color:#1a2238;font-size:11px;font-weight:900;
+    padding:3px 8px;border-radius:4px;margin-left:6px;letter-spacing:.05em;
+  }
+
+  /* 5 reasons */
+  .reasons{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px;}
+  @media(max-width:680px){.reasons{grid-template-columns:repeat(2,1fr);}}
+  .reason{
+    background:#fff;border:1px solid var(--line);border-radius:6px;
+    padding:12px 10px;text-align:center;
+  }
+  .reason .nm{
+    background:var(--bad);color:#fff;font-size:10px;font-weight:900;
+    padding:2px 8px;border-radius:99px;display:inline-block;margin-bottom:6px;
+    letter-spacing:.05em;
+  }
+  .reason h4{font-family:var(--mincho);font-size:12px;line-height:1.5;color:var(--navy);margin-bottom:8px;min-height:36px;}
+  .reason .vis{
+    aspect-ratio:1/.85;border-radius:4px;margin-bottom:8px;background:var(--navy-l);
+    display:grid;place-items:center;overflow:hidden;
+  }
+  .reason p{font-size:10.5px;color:var(--ink-2);line-height:1.6;text-align:left;}
+
+  /* Sec heading bar */
+  .sec-bar{
+    background:var(--navy);color:#fff;font-family:var(--mincho);font-weight:700;
+    font-size:16px;padding:7px 16px;display:inline-block;letter-spacing:.05em;
+    border-left:5px solid var(--gold);margin-bottom:14px;
+  }
+  .sec-bar + .sub{display:inline-block;margin-left:10px;font-size:13px;color:var(--ink-2);font-family:var(--mincho);}
+
+  /* Cases */
+  .cases{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:680px){.cases{grid-template-columns:repeat(2,1fr);}}
+  .case .ba{
+    aspect-ratio:1/1;display:grid;grid-template-columns:1fr 1fr;border-radius:6px;overflow:hidden;
+    border:1px solid var(--line);
+  }
+  .case .ba .b,.case .ba .a{
+    position:relative;display:grid;align-items:start;
+    font-family:Arial,sans-serif;font-weight:700;color:#fff;font-size:10px;
+  }
+  .case .ba .b > span,.case .ba .a > span{
+    background:rgba(0,0,0,.55);padding:1px 5px;border-radius:2px;margin:5px;
+  }
+  .case .meta{font-size:11px;text-align:center;line-height:1.5;margin-top:6px;color:var(--ink-2);}
+  .case .meta b{display:block;color:var(--navy);font-family:var(--mincho);font-size:12px;}
+  .case-note{text-align:center;font-size:12px;color:var(--ink-3);margin:14px 0;}
+
+  /* Flow */
+  .flow{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;}
+  @media(max-width:680px){.flow{grid-template-columns:repeat(3,1fr);}}
+  .step{
+    background:#fff;border:1px solid var(--line);border-radius:6px;padding:10px 6px;
+    text-align:center;position:relative;
+  }
+  .step::after{
+    content:"›";position:absolute;right:-10px;top:50%;transform:translateY(-50%);
+    color:var(--gold);font-size:24px;font-weight:900;z-index:2;
+  }
+  .step:last-child::after{display:none;}
+  .step .lbl{font-size:9px;letter-spacing:.15em;color:var(--ink-3);font-family:var(--mincho);}
+  .step .nm{font-family:var(--mincho);font-weight:700;font-size:22px;color:var(--navy);line-height:1;}
+  .step .ic{margin:6px auto 4px;}
+  .step h5{font-family:var(--mincho);font-weight:700;font-size:11px;color:var(--navy);line-height:1.4;}
+
+  /* Voices */
+  .voices{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:680px){.voices{grid-template-columns:1fr;}}
+  .voice{background:#fff;border:1px solid var(--line);border-radius:8px;padding:14px;}
+  .voice .who{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .voice .av{width:46px;height:46px;border-radius:99px;overflow:hidden;background:var(--navy-l);flex:0 0 46px;}
+  .voice .nm{font-family:var(--mincho);font-size:12px;font-weight:700;line-height:1.4;}
+  .voice .nm small{display:block;color:var(--ink-3);font-weight:500;font-size:10.5px;}
+  .voice h4{font-family:var(--mincho);font-size:13px;color:var(--navy);margin-bottom:6px;line-height:1.5;}
+  .voice .stars{color:var(--gold);font-size:12px;letter-spacing:.1em;margin-bottom:6px;}
+  .voice p{font-size:11.5px;color:var(--ink-2);line-height:1.7;}
+
+  /* Area */
+  .area-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+  @media(max-width:680px){.area-grid{grid-template-columns:1fr;}}
+  .area-text{font-size:12px;color:var(--ink-2);line-height:1.85;}
+  .area-text h4{
+    font-family:var(--mincho);font-size:13px;color:var(--navy);margin-bottom:4px;
+    border-left:4px solid var(--gold);padding-left:8px;
+  }
+  .area-text .note{
+    background:#fff;border:1px dashed var(--gold);padding:8px 10px;
+    border-radius:6px;margin-top:10px;font-size:11px;
+  }
+  .area-text .note b{color:var(--bad);}
+  .area-map{background:#fff;border:1px solid var(--line);border-radius:6px;padding:8px;}
+
+  /* FAQ */
+  .faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 22px;}
+  @media(max-width:680px){.faq-grid{grid-template-columns:1fr;}}
+  .faq-q{
+    font-family:var(--mincho);font-size:13px;font-weight:700;color:var(--navy);
+    padding:10px 0 4px;border-bottom:1px dashed var(--line);
+    display:flex;gap:8px;
+  }
+  .faq-q .qm{color:var(--bad);font-weight:900;}
+  .faq-a{font-size:11.5px;color:var(--ink-2);line-height:1.75;padding:6px 0 12px 18px;
+    position:relative;border-bottom:1px solid var(--line);}
+  .faq-a::before{content:"A.";position:absolute;left:0;top:6px;color:var(--navy);font-weight:900;font-family:var(--mincho);}
+
+  /* Company */
+  .company{
+    background:var(--paper-2);padding:22px 26px;
+    display:grid;grid-template-columns:1fr 1.4fr;gap:18px;
+  }
+  @media(max-width:680px){.company{grid-template-columns:1fr;}}
+  .company .brand h4{
+    font-family:var(--mincho);font-size:18px;color:var(--navy);margin-bottom:4px;
+    border-left:4px solid var(--gold);padding-left:8px;
+  }
+  .company .brand p{font-size:11px;color:var(--ink-2);line-height:1.7;}
+  .company .photo-block{margin-top:8px;display:grid;grid-template-columns:80px 1fr;gap:10px;align-items:center;}
+  .company .photo-block .av{aspect-ratio:1/1;border-radius:4px;overflow:hidden;background:var(--navy-l);}
+  .company .photo-block .desc{font-size:11px;color:var(--ink-2);line-height:1.7;}
+  .company .info{background:#fff;border:1px solid var(--line);border-radius:6px;padding:14px;font-size:11px;line-height:1.85;}
+  .company .info dl{display:grid;grid-template-columns:80px 1fr;gap:0 10px;margin:0;}
+  .company .info dt{color:var(--ink-3);font-weight:600;border-bottom:1px dotted var(--line);padding:5px 0;font-family:var(--mincho);}
+  .company .info dd{margin:0;color:var(--ink);font-weight:500;border-bottom:1px dotted var(--line);padding:5px 0;}
+  .company .info .footer-cta{margin-top:12px;}
+
+  footer.copy{background:var(--navy-d);color:#7a8aa8;text-align:center;font-size:11px;padding:14px;letter-spacing:.05em;}
+
+  /* ───── SIDEBAR ───── */
+  .side-cta{background:#fff;border-radius:8px;padding:12px;text-align:center;color:var(--ink);margin-bottom:14px;}
+  .side-cta .ttl{font-family:var(--mincho);font-size:13px;color:var(--ink-2);margin-bottom:8px;}
+  .side-cta .ttl b{color:var(--bad);}
+  .side-btn-line{
+    background:var(--line-green);color:#fff;border-radius:6px;
+    padding:12px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;
+    font-family:var(--mincho);font-weight:800;font-size:15px;letter-spacing:.03em;
+    box-shadow:0 4px 0 var(--line-green-d);width:100%;line-height:1.3;
+  }
+  .side-btn-line .row{display:flex;align-items:center;gap:8px;}
+  .side-btn-line svg{width:18px;height:18px;}
+  .side-btn-line .badge{
+    background:#ffe53b;color:#1a2238;font-size:10px;font-weight:900;
+    padding:2px 8px;border-radius:99px;letter-spacing:.05em;
+  }
+  .side-cta .note{font-family:var(--mincho);font-size:10.5px;color:var(--ink-3);margin-top:8px;line-height:1.6;}
+
+  .side-check{background:#fff;color:var(--ink);border-radius:8px;padding:14px 12px;margin-bottom:14px;}
+  .side-check .lead{font-family:var(--mincho);font-size:12px;font-weight:700;color:var(--bad);margin-bottom:6px;}
+  .side-check h4{
+    font-family:var(--mincho);font-size:15px;color:var(--navy);font-weight:800;
+    border-bottom:2px solid var(--navy);padding-bottom:6px;margin-bottom:8px;
+  }
+  .side-check ul{list-style:none;padding:0;margin:0;font-size:11.5px;line-height:1.6;font-family:var(--maru);}
+  .side-check li{padding:7px 0 7px 22px;position:relative;border-bottom:1px dashed var(--line);}
+  .side-check li:last-child{border:none;}
+  .side-check li::before{content:"";position:absolute;left:0;top:9px;width:13px;height:13px;border:1.5px solid #aaa;border-radius:2px;background:#fff;}
+  .side-check li::after{content:"✓";position:absolute;left:1px;top:5px;color:var(--bad);font-weight:900;font-size:13px;}
+  .side-check .footer-msg{
+    margin-top:10px;background:var(--paper);border:1px dashed var(--gold);
+    padding:8px;border-radius:4px;font-size:11px;line-height:1.5;text-align:center;font-family:var(--mincho);
+  }
+  .side-check .footer-msg b{color:var(--bad);}
+  .side-check .home-icon{display:flex;justify-content:center;margin-top:8px;}
+
+  .floating{position:fixed;bottom:14px;right:14px;z-index:90;display:none;}
+  @media(max-width:880px){.floating{display:block;}}
+  .floating a{
+    background:var(--line-green);color:#fff;padding:14px 18px;border-radius:99px;
+    font-family:var(--mincho);font-weight:800;font-size:14px;
+    display:flex;align-items:center;gap:8px;box-shadow:0 10px 24px -8px rgba(6,199,85,.6);
+  }
+  .floating svg{width:18px;height:18px;}
+
+</style>
 </head>
 <body>
 
-<header>
-  <div class="header-inner">
-    <div class="logo-wrap">
-      <div class="logo-icon">🏠</div>
-      <div class="logo-text">
-        <small>住まいの塗り替え専門店</small>
-        <strong>小野塗装</strong>
-      </div>
-    </div>
-    <nav class="header-nav">
-      <a href="#merit">選ばれる理由</a>
-      <a href="#flow">施工の流れ</a>
-      <a href="#area">対応エリア</a>
-      <a href="#faq">よくある質問</a>
-      <a href="#company">会社情報</a>
-    </nav>
-    <a href="https://lin.ee/XXXXXXX" class="header-cta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-      無料相談はこちら
-    </a>
-  </div>
-</header>
+<div class="topbar">福岡県で築10〜20年の戸建てにお住まいの方へ</div>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-text">
-      <div class="hero-label">📍 行橋・苅田・中津エリア 地元密着</div>
-      <h1 class="hero-catch">その「汚れや色あせ」、<br><em>塗り替えのサインです！</em></h1>
-      <p class="hero-sub">外壁の塗り替えで、住まいは新築のように美しく。<br>大切なご家族と暮らしを長く守ります。</p>
-      <div class="hero-badges">
-        <div class="hero-badge"><span>🏠</span>戸建て塗装専門</div>
-        <div class="hero-badge"><span>👷</span>代表直接施工</div>
-        <div class="hero-badge"><span>📋</span>お見積もり無料</div>
-      </div>
-      <a href="https://lin.ee/XXXXXXX" class="line-cta-box" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="#fff"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-        <div class="line-cta-text">
-          <small>無料 外壁診断・お見積もりはこちら</small>
-          <strong>LINEで無料見積もりを依頼する</strong>
+<div class="page">
+
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <span class="hero-tag">外壁・屋根の塗り替えで</span>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <h1>
+            <span class="l1">外壁・屋根の塗り替えで</span>
+            <span class="l2"><em>10年後も</em>、<em>安心できる</em></span>
+            <span class="l3">我が家に。</span>
+          </h1>
+          <p class="lead">
+            代表の小野が、最初から最後まで <span class="direct">直接施工</span>。<br>
+            中間マージンなしの適正価格で、高品質な塗装をお約束します。
+          </p>
+          <div class="hero-badges">
+            <div class="hbadge">
+              <svg class="ic" width="32" height="22" viewBox="0 0 32 22"><circle cx="16" cy="9" r="6" fill="#fff"/><path d="M5 22 Q16 14 27 22 Z" fill="#fff"/><circle cx="13" cy="9" r="1" fill="#1f3756"/><circle cx="19" cy="9" r="1" fill="#1f3756"/><path d="M14 11 Q16 12 18 11" stroke="#1f3756" fill="none" stroke-width="0.6"/></svg>
+              代表が<br>直接施工
+            </div>
+            <div class="hbadge">
+              <svg class="ic" width="26" height="22" viewBox="0 0 26 22"><circle cx="13" cy="11" r="9" fill="none" stroke="#fff" stroke-width="1.5"/><text x="13" y="15" font-family="serif" font-size="12" fill="#fff" text-anchor="middle" font-weight="700">¥</text></svg>
+              中間マージン<br>なしの適正価格
+            </div>
+            <div class="hbadge green">
+              <svg class="ic" width="28" height="22" viewBox="0 0 24 24" fill="#fff"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+              LINEで<br>気軽に相談OK
+            </div>
+          </div>
         </div>
-        <div class="line-cta-arrow">›</div>
+
+        <!-- 親方 illustration -->
+        <div class="hero-illust">
+          <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" style="background:linear-gradient(180deg,#e8e2cf 0%,#cdc4a8 100%);">
+            <!-- wall background -->
+            <rect x="0" y="0" width="400" height="320" fill="#e8e2cf"/>
+            <rect x="0" y="0" width="400" height="320" fill="url(#wallpat)"/>
+            <defs>
+              <pattern id="wallpat" width="6" height="6" patternUnits="userSpaceOnUse">
+                <rect width="6" height="6" fill="#e8e2cf"/>
+                <circle cx="3" cy="3" r="0.5" fill="#b8af90" opacity="0.35"/>
+              </pattern>
+            </defs>
+            <!-- wall plank lines -->
+            <line x1="0" y1="60" x2="400" y2="60" stroke="#b8af90" stroke-width="0.6" opacity="0.5"/>
+            <line x1="0" y1="200" x2="400" y2="200" stroke="#b8af90" stroke-width="0.6" opacity="0.5"/>
+            <line x1="120" y1="0" x2="120" y2="320" stroke="#b8af90" stroke-width="0.6" opacity="0.5"/>
+            <line x1="280" y1="0" x2="280" y2="320" stroke="#b8af90" stroke-width="0.6" opacity="0.5"/>
+            <!-- light gradient -->
+            <rect x="0" y="0" width="400" height="320" fill="url(#litegrad)"/>
+            <defs>
+              <linearGradient id="litegrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#fff" stop-opacity="0.35"/>
+                <stop offset="1" stop-color="#000" stop-opacity="0.1"/>
+              </linearGradient>
+            </defs>
+
+            <!-- Person (親方) right side -->
+            <g transform="translate(220,40)">
+              <!-- hardhat -->
+              <ellipse cx="80" cy="20" rx="46" ry="14" fill="#e8e2cf"/>
+              <path d="M40,30 Q40,0 80,0 Q120,0 120,30 L122,42 L38,42 Z" fill="#f5f1e6"/>
+              <rect x="38" y="38" width="84" height="6" fill="#f5f1e6" stroke="#c8bda0" stroke-width="0.5"/>
+              <line x1="80" y1="0" x2="80" y2="38" stroke="#d4caa8" stroke-width="1"/>
+              <line x1="58" y1="6" x2="58" y2="38" stroke="#d4caa8" stroke-width="0.6"/>
+              <line x1="102" y1="6" x2="102" y2="38" stroke="#d4caa8" stroke-width="0.6"/>
+              <!-- face -->
+              <ellipse cx="80" cy="62" rx="26" ry="30" fill="#f1cfa5"/>
+              <!-- ear hint -->
+              <ellipse cx="55" cy="64" rx="3" ry="5" fill="#e6bc8d"/>
+              <ellipse cx="105" cy="64" rx="3" ry="5" fill="#e6bc8d"/>
+              <!-- hair under hat -->
+              <path d="M55,46 Q60,42 80,42 Q100,42 105,46 L105,52 Q80,48 55,52 Z" fill="#2a2018"/>
+              <!-- eyebrows -->
+              <path d="M64,56 Q70,53 76,56" stroke="#2a2018" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <path d="M84,56 Q90,53 96,56" stroke="#2a2018" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <!-- eyes -->
+              <ellipse cx="70" cy="64" rx="2.5" ry="3" fill="#1a1410"/>
+              <ellipse cx="90" cy="64" rx="2.5" ry="3" fill="#1a1410"/>
+              <!-- nose -->
+              <path d="M80,68 Q82,76 79,80 Q76,80 78,76 Z" fill="#e6bc8d"/>
+              <!-- mouth subtle smile -->
+              <path d="M72,84 Q80,89 88,84" stroke="#7a4a2e" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+              <!-- neck -->
+              <rect x="72" y="88" width="16" height="10" fill="#e6bc8d"/>
+              <!-- body / black work jacket -->
+              <path d="M30,108 Q40,98 70,98 L90,98 Q120,98 130,108 L138,180 Q138,240 130,290 L30,290 Q22,240 22,180 Z" fill="#1a1814"/>
+              <!-- jacket open chest -->
+              <path d="M70,100 L80,140 L90,100 Z" fill="#2a2620"/>
+              <!-- arm crossed left (their right) -->
+              <path d="M30,118 Q14,150 26,200 Q60,200 70,180 Q60,150 50,120 Z" fill="#1a1814"/>
+              <!-- arm crossed -->
+              <path d="M130,118 Q146,150 134,200 Q100,200 90,180 Q100,150 110,120 Z" fill="#1a1814"/>
+              <!-- hands clasped -->
+              <ellipse cx="70" cy="195" rx="14" ry="10" fill="#f1cfa5"/>
+              <ellipse cx="92" cy="195" rx="14" ry="10" fill="#f1cfa5"/>
+              <!-- jacket trim/zipper -->
+              <line x1="80" y1="100" x2="80" y2="180" stroke="#444" stroke-width="0.6" stroke-dasharray="2 2"/>
+            </g>
+
+            <!-- speech bubble inside illust -->
+            <g transform="translate(20,170)">
+              <rect x="0" y="0" width="170" height="58" rx="8" fill="#fff" stroke="#ddd"/>
+              <path d="M150,50 L160,68 L138,52 Z" fill="#fff" stroke="#ddd"/>
+              <text x="14" y="20" font-family="Shippori Mincho,serif" font-size="13" fill="#222" font-weight="700">私が責任をもって</text>
+              <text x="14" y="40" font-family="Shippori Mincho,serif" font-size="13" fill="#d23c2e" font-weight="700">施工します！</text>
+            </g>
+
+            <!-- name caption -->
+            <g transform="translate(280,272)">
+              <rect x="0" y="0" width="80" height="22" fill="rgba(31,55,86,0.85)" rx="2"/>
+              <text x="40" y="15" font-family="Shippori Mincho,serif" font-size="11" fill="#fff" text-anchor="middle" font-weight="700">― 小野 翔太</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- BELT -->
+    <div class="belt">
+      <small>地域密着・一人親方だからこそ、1家1家ご誠実な家族工事</small>
+      <h2 style="font-size:13px;color:var(--ink-2);margin-top:6px;">なぜ、塗り替えが必要なのか？</h2>
+    </div>
+
+    <!-- WHY -->
+    <section class="s" style="padding-top:6px;">
+      <div class="s-title">
+        <h3>外壁・屋根の塗り替えで、住まいの価値を守る</h3>
+        <p class="lead">雨や風など、見た目をきれいにするだけでなく、家族の住む家を「いつまでも快適な暮らし」を続けるための<br>必要なメンテナンスです。</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-c">
+          <!-- house shield -->
+          <svg class="ic" width="56" height="48" viewBox="0 0 56 48">
+            <path d="M28,4 L48,14 V30 Q48,42 28,46 Q8,42 8,30 V14 Z" fill="#1f3756"/>
+            <path d="M16,26 L28,18 L40,26 V36 H16 Z" fill="#fff"/>
+            <rect x="25" y="29" width="6" height="7" fill="#1f3756"/>
+          </svg>
+          <h4>建物を雨から守る</h4>
+          <p>早めのメンテナンスで、雨水の侵入を防止します。塗り替えのタイミングが、家の寿命を左右します。</p>
+        </div>
+        <div class="why-c">
+          <!-- yen coin -->
+          <svg class="ic" width="56" height="48" viewBox="0 0 56 48">
+            <circle cx="28" cy="24" r="20" fill="#1f3756"/>
+            <text x="28" y="32" font-family="serif" font-size="26" fill="#fff" text-anchor="middle" font-weight="700">¥</text>
+            <path d="M44,8 L48,12 L44,16" stroke="#c89854" stroke-width="2" fill="none"/>
+            <path d="M48,12 L36,12" stroke="#c89854" stroke-width="2"/>
+          </svg>
+          <h4>余計な出費を防ぐ</h4>
+          <p>劣化を放置すると下地の補修まで必要に。早めの塗り替えで、トータルコストを抑えられます。</p>
+        </div>
+        <div class="why-c">
+          <!-- sparkle house -->
+          <svg class="ic" width="56" height="48" viewBox="0 0 56 48">
+            <path d="M14,28 L28,16 L42,28 V42 H14 Z" fill="#1f3756"/>
+            <rect x="25" y="31" width="6" height="11" fill="#fff"/>
+            <path d="M44,8 l2,4 l4,2 l-4,2 l-2,4 l-2,-4 l-4,-2 l4,-2 z" fill="#c89854"/>
+            <path d="M10,12 l1,2 l2,1 l-2,1 l-1,2 l-1,-2 l-2,-1 l2,-1 z" fill="#c89854"/>
+          </svg>
+          <h4>美観がよみがえる</h4>
+          <p>お住まいの印象がぐっと若返ります。色のくすみや汚れが取れ、新築のようにリフレッシュ。</p>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <p class="copy">塗り替えのタイミングや費用のことなど、<br>どんなことでもお気軽にご相談ください！</p>
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 5 reasons -->
+    <section class="s" style="padding-top:0;">
+      <div class="s-title">
+        <h3>小野塗装が選ばれる<em>5</em>つの理由</h3>
+      </div>
+      <div class="reasons">
+        <!-- 01 -->
+        <div class="reason">
+          <div class="nm">理由 01</div>
+          <h4>代表が直接施工</h4>
+          <div class="vis">
+            <svg viewBox="0 0 60 50" width="100%">
+              <rect width="60" height="50" fill="#cfd9e8"/>
+              <path d="M16,18 Q16,8 30,8 Q44,8 44,18 L44,22 L16,22 Z" fill="#f5f1e6"/>
+              <ellipse cx="30" cy="24" rx="9" ry="11" fill="#f1cfa5"/>
+              <path d="M21,18 Q22,14 30,14 Q38,14 39,18 L39,22 Q30,20 21,22 Z" fill="#2a2018"/>
+              <circle cx="27" cy="24" r="1" fill="#1a1410"/>
+              <circle cx="33" cy="24" r="1" fill="#1a1410"/>
+              <path d="M27,30 Q30,32 33,30" stroke="#7a4a2e" stroke-width="0.8" fill="none"/>
+              <path d="M14,50 Q14,38 30,36 Q46,38 46,50 Z" fill="#1a1814"/>
+            </svg>
+          </div>
+          <p>下請けに任せず、代表の小野が最初から最後まで責任を持って対応します。</p>
+        </div>
+        <!-- 02 -->
+        <div class="reason">
+          <div class="nm">理由 02</div>
+          <h4>中間マージンなしの<br>適正価格</h4>
+          <div class="vis">
+            <svg viewBox="0 0 60 50" width="100%">
+              <rect width="60" height="50" fill="#cfd9e8"/>
+              <rect x="10" y="14" width="40" height="26" rx="2" fill="#fff" stroke="#1f3756"/>
+              <line x1="10" y1="22" x2="50" y2="22" stroke="#1f3756" stroke-width="0.6"/>
+              <text x="30" y="33" font-family="serif" font-size="14" fill="#1f3756" text-anchor="middle" font-weight="700">¥ 適正</text>
+              <circle cx="48" cy="14" r="6" fill="#c89854"/>
+              <text x="48" y="17" font-family="serif" font-size="8" fill="#fff" text-anchor="middle" font-weight="700">★</text>
+            </svg>
+          </div>
+          <p>ハウスメーカーや大手のような余計な中間マージンがないため、適正価格でご提供。</p>
+        </div>
+        <!-- 03 -->
+        <div class="reason">
+          <div class="nm">理由 03</div>
+          <h4>下塗り・中塗り・<br>上塗りを徹底</h4>
+          <div class="vis">
+            <svg viewBox="0 0 60 50" width="100%">
+              <rect width="60" height="50" fill="#cfd9e8"/>
+              <rect x="8" y="10" width="44" height="8" fill="#a89b78"/>
+              <rect x="8" y="20" width="44" height="8" fill="#1f3756"/>
+              <rect x="8" y="30" width="44" height="8" fill="#3a5a85"/>
+              <text x="56" y="16" font-family="serif" font-size="6" fill="#1f3756" text-anchor="end" font-weight="700">下</text>
+              <text x="56" y="26" font-family="serif" font-size="6" fill="#1f3756" text-anchor="end" font-weight="700">中</text>
+              <text x="56" y="36" font-family="serif" font-size="6" fill="#1f3756" text-anchor="end" font-weight="700">上</text>
+            </svg>
+          </div>
+          <p>塗装の基本工程を一切妥協せず、しっかり3回塗りで仕上げます。</p>
+        </div>
+        <!-- 04 -->
+        <div class="reason">
+          <div class="nm">理由 04</div>
+          <h4>高品質な塗料・<br>確かな技術</h4>
+          <div class="vis">
+            <svg viewBox="0 0 60 50" width="100%">
+              <rect width="60" height="50" fill="#cfd9e8"/>
+              <!-- brush -->
+              <rect x="20" y="10" width="6" height="20" fill="#8b6235" transform="rotate(-20 23 20)"/>
+              <rect x="14" y="28" width="18" height="8" fill="#444" transform="rotate(-20 23 32)"/>
+              <path d="M10,38 L34,46 L36,42 L12,34 Z" fill="#1f3756" transform="rotate(-20 23 40)"/>
+              <!-- paint can -->
+              <rect x="38" y="22" width="14" height="16" fill="#c89854"/>
+              <rect x="36" y="20" width="18" height="4" fill="#a87a37"/>
+              <ellipse cx="45" cy="44" rx="8" ry="2" fill="#1f3756" opacity="0.6"/>
+            </svg>
+          </div>
+          <p>耐久年数の長い高品質塗料を使用。15年の経験で得た技術で、長く美しい塗膜を実現します。</p>
+        </div>
+        <!-- 05 -->
+        <div class="reason">
+          <div class="nm">理由 05</div>
+          <h4>LINEで気軽に<br>相談OK</h4>
+          <div class="vis">
+            <svg viewBox="0 0 60 50" width="100%">
+              <rect width="60" height="50" fill="#cfd9e8"/>
+              <rect x="18" y="6" width="24" height="38" rx="3" fill="#1a1814"/>
+              <rect x="20" y="10" width="20" height="28" fill="#06c755"/>
+              <text x="30" y="28" font-family="serif" font-size="10" fill="#fff" text-anchor="middle" font-weight="800">LINE</text>
+              <circle cx="30" cy="41" r="1.5" fill="#444"/>
+            </svg>
+          </div>
+          <p>写真を送るだけでもOK。LINEひとつで簡単に、しつこい営業電話もありません。</p>
+        </div>
+      </div>
+
+      <div class="cta-box">
+        <p class="copy">まずはLINEで、住まいの状態をお気軽にご相談ください！</p>
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 施工事例 -->
+    <section class="s">
+      <div>
+        <span class="sec-bar">施工事例</span>
+        <span class="sub">ビフォーアフターで見る、確かな仕上がり</span>
+      </div>
+      <div class="cases">
+        <div class="case">
+          <div class="ba">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+              <rect x="0" y="0" width="50" height="100" fill="#7a6a4f"/>
+              <rect x="50" y="0" width="50" height="100" fill="#c5b693"/>
+              <!-- house silhouette before -->
+              <path d="M5,55 L25,40 L45,55 V92 H5 Z" fill="#5a4a30"/>
+              <rect x="20" y="68" width="10" height="24" fill="#3a2e1c"/>
+              <line x1="5" y1="60" x2="45" y2="60" stroke="#3a2e1c" stroke-width="0.6"/>
+              <line x1="5" y1="75" x2="45" y2="75" stroke="#3a2e1c" stroke-width="0.6"/>
+              <!-- after -->
+              <path d="M55,55 L75,40 L95,55 V92 H55 Z" fill="#a89370"/>
+              <rect x="70" y="68" width="10" height="24" fill="#5a4a30"/>
+              <line x1="55" y1="60" x2="95" y2="60" stroke="#7a6850" stroke-width="0.5"/>
+              <line x1="55" y1="75" x2="95" y2="75" stroke="#7a6850" stroke-width="0.5"/>
+              <text x="4" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">Before</text>
+              <text x="54" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">After</text>
+            </svg>
+          </div>
+          <div class="meta"><b>福岡県行橋市</b>築15年</div>
+        </div>
+        <div class="case">
+          <div class="ba">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+              <rect x="0" y="0" width="50" height="100" fill="#6a6058"/>
+              <rect x="50" y="0" width="50" height="100" fill="#8aa0b8"/>
+              <path d="M5,55 L25,40 L45,55 V92 H5 Z" fill="#403830"/>
+              <rect x="20" y="68" width="10" height="24" fill="#2a2218"/>
+              <line x1="5" y1="60" x2="45" y2="60" stroke="#2a2218" stroke-width="0.6"/>
+              <line x1="5" y1="75" x2="45" y2="75" stroke="#2a2218" stroke-width="0.6"/>
+              <path d="M55,55 L75,40 L95,55 V92 H55 Z" fill="#5a7898"/>
+              <rect x="70" y="68" width="10" height="24" fill="#3a5278"/>
+              <line x1="55" y1="60" x2="95" y2="60" stroke="#3a5278" stroke-width="0.5"/>
+              <line x1="55" y1="75" x2="95" y2="75" stroke="#3a5278" stroke-width="0.5"/>
+              <text x="4" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">Before</text>
+              <text x="54" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">After</text>
+            </svg>
+          </div>
+          <div class="meta"><b>福岡県苅田町</b>築18年</div>
+        </div>
+        <div class="case">
+          <div class="ba">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+              <rect x="0" y="0" width="50" height="100" fill="#857058"/>
+              <rect x="50" y="0" width="50" height="100" fill="#d8c89a"/>
+              <path d="M5,55 L25,40 L45,55 V92 H5 Z" fill="#5a4830"/>
+              <rect x="20" y="68" width="10" height="24" fill="#3a2e1a"/>
+              <line x1="5" y1="60" x2="45" y2="60" stroke="#3a2e1a" stroke-width="0.6"/>
+              <line x1="5" y1="75" x2="45" y2="75" stroke="#3a2e1a" stroke-width="0.6"/>
+              <path d="M55,55 L75,40 L95,55 V92 H55 Z" fill="#a89370"/>
+              <rect x="70" y="68" width="10" height="24" fill="#705f48"/>
+              <line x1="55" y1="60" x2="95" y2="60" stroke="#705f48" stroke-width="0.5"/>
+              <line x1="55" y1="75" x2="95" y2="75" stroke="#705f48" stroke-width="0.5"/>
+              <text x="4" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">Before</text>
+              <text x="54" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">After</text>
+            </svg>
+          </div>
+          <div class="meta"><b>大分県中津市</b>築22年</div>
+        </div>
+        <div class="case">
+          <div class="ba">
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" style="width:100%;height:100%;display:block;">
+              <rect x="0" y="0" width="50" height="100" fill="#736455"/>
+              <rect x="50" y="0" width="50" height="100" fill="#e8e1d0"/>
+              <path d="M5,55 L25,40 L45,55 V92 H5 Z" fill="#4a3e30"/>
+              <rect x="20" y="68" width="10" height="24" fill="#2a2218"/>
+              <line x1="5" y1="60" x2="45" y2="60" stroke="#2a2218" stroke-width="0.6"/>
+              <line x1="5" y1="75" x2="45" y2="75" stroke="#2a2218" stroke-width="0.6"/>
+              <path d="M55,55 L75,40 L95,55 V92 H55 Z" fill="#bcb098"/>
+              <rect x="70" y="68" width="10" height="24" fill="#807358"/>
+              <line x1="55" y1="60" x2="95" y2="60" stroke="#807358" stroke-width="0.5"/>
+              <line x1="55" y1="75" x2="95" y2="75" stroke="#807358" stroke-width="0.5"/>
+              <text x="4" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">Before</text>
+              <text x="54" y="11" font-family="Arial" font-size="7" fill="#fff" font-weight="700">After</text>
+            </svg>
+          </div>
+          <div class="meta"><b>大分県宇佐市</b>築12年</div>
+        </div>
+      </div>
+      <p class="case-note">タモのお家の事例も、続々ご紹介してまいります。</p>
+      <div style="text-align:center;">
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Flow -->
+    <section class="s">
+      <div><span class="sec-bar">ご相談〜施工完了までの流れ</span></div>
+      <div class="flow">
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">01</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><rect x="2" y="4" width="32" height="22" rx="2" fill="#1f3756"/><path d="M2 6 L18 18 L34 6" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+          <h5>ご相談<br>お問い合わせ</h5>
+        </div>
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">02</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><circle cx="14" cy="13" r="9" fill="none" stroke="#1f3756" stroke-width="2"/><line x1="20" y1="20" x2="30" y2="26" stroke="#1f3756" stroke-width="3" stroke-linecap="round"/></svg>
+          <h5>現地調査</h5>
+        </div>
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">03</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><rect x="6" y="2" width="22" height="24" rx="1" fill="#1f3756"/><line x1="10" y1="8" x2="24" y2="8" stroke="#fff" stroke-width="1.2"/><line x1="10" y1="13" x2="24" y2="13" stroke="#fff" stroke-width="1.2"/><line x1="10" y1="18" x2="20" y2="18" stroke="#fff" stroke-width="1.2"/></svg>
+          <h5>お見積り<br>ご提案</h5>
+        </div>
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">04</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><path d="M6,18 Q12,8 18,14 Q24,8 30,18 L26,24 Q18,20 10,24 Z" fill="#1f3756"/></svg>
+          <h5>ご契約</h5>
+        </div>
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">05</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><rect x="14" y="3" width="3" height="14" fill="#8b6235" transform="rotate(-15 15 10)"/><rect x="10" y="14" width="14" height="6" fill="#444" transform="rotate(-15 17 17)"/><path d="M6,22 L26,28 L28,24 L8,18 Z" fill="#c89854" transform="rotate(-15 17 23)"/></svg>
+          <h5>施工開始</h5>
+        </div>
+        <div class="step">
+          <div class="lbl">STEP</div>
+          <div class="nm">06</div>
+          <svg class="ic" width="36" height="28" viewBox="0 0 36 28"><path d="M6,16 L18,4 L30,16 V26 H6 Z" fill="#1f3756"/><rect x="15" y="18" width="6" height="8" fill="#fff"/></svg>
+          <h5>完了<br>お引き渡し</h5>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:20px;">
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Voices -->
+    <section class="s">
+      <div><span class="sec-bar">お客様の声</span><span class="sub">嬉しい声をいただいています</span></div>
+      <div class="voices">
+        <div class="voice">
+          <div class="who">
+            <div class="av">
+              <svg viewBox="0 0 46 46"><rect width="46" height="46" fill="#cfd9e8"/><circle cx="23" cy="20" r="9" fill="#f1cfa5"/><path d="M21,15 Q23,11 28,12 Q31,15 30,20 Q26,18 21,20 Z" fill="#3a3024"/><path d="M8,46 Q8,32 23,30 Q38,32 38,46 Z" fill="#1f3756"/></svg>
+            </div>
+            <div class="nm">N様邸 <small>60代男性</small></div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <h4>親方の腕で安心して<br>任せられる仕事ぶりでした</h4>
+          <p>説明が丁寧で、毎日進捗をLINEで送ってくれて安心でした。仕上がりも非常に満足です。</p>
+        </div>
+        <div class="voice">
+          <div class="who">
+            <div class="av">
+              <svg viewBox="0 0 46 46"><rect width="46" height="46" fill="#f5e8d8"/><circle cx="23" cy="20" r="9" fill="#f5d8b8"/><path d="M14,16 Q14,8 23,8 Q32,8 32,16 Q32,20 30,20 Q26,16 23,16 Q20,16 16,20 Q14,20 14,16 Z" fill="#5a3a24"/><path d="M8,46 Q8,32 23,30 Q38,32 38,46 Z" fill="#c89854"/></svg>
+            </div>
+            <div class="nm">M様邸 <small>40代女性</small></div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <h4>LINEで気軽に相談できて<br>とても助かりました</h4>
+          <p>共働きで日中は不在ですが、LINEで写真付き報告をいただけて、家族で内容を確認できました。</p>
+        </div>
+        <div class="voice">
+          <div class="who">
+            <div class="av">
+              <svg viewBox="0 0 46 46"><rect width="46" height="46" fill="#cfe0d8"/><circle cx="23" cy="20" r="9" fill="#f1cfa5"/><path d="M14,18 Q14,10 23,10 Q32,10 32,18 Q26,15 23,15 Q20,15 14,18 Z" fill="#888"/><path d="M8,46 Q8,32 23,30 Q38,32 38,46 Z" fill="#5a6878"/></svg>
+            </div>
+            <div class="nm">久保家 <small>60代男性</small></div>
+          </div>
+          <div class="stars">★★★★★</div>
+          <h4>適正価格で、納得して<br>お任せできました</h4>
+          <p>他社より安いのに塗料は同等以上。1行ずつ内訳を見せてくれて、正直な仕事ぶりに惚れました。</p>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:18px;">
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Area -->
+    <section class="s">
+      <div><span class="sec-bar">対応エリア</span><span class="sub">福岡県・大分県に対応しています</span></div>
+      <div class="area-grid">
+        <div class="area-text">
+          <h4>福岡県</h4>
+          <p>行橋市・苅田町・みやこ町・築上町・豊前市・上毛町・吉富町</p>
+          <h4 style="margin-top:12px;">大分県</h4>
+          <p>中津市・宇佐市・豊後高田市</p>
+          <div class="note"><b>※</b> 上記以外の地域での対応可能性もございますので、お気軽にご相談ください。</div>
+        </div>
+        <div class="area-map">
+          <svg viewBox="0 0 300 220" style="width:100%;height:auto;">
+            <rect width="300" height="220" fill="#f5f1e6"/>
+            <!-- 福岡 -->
+            <path d="M30,80 Q60,40 130,55 Q170,70 175,115 Q160,150 110,160 Q50,155 30,125 Z"
+                  fill="#aac4a8" stroke="#7a9c78" stroke-width="1.5"/>
+            <text x="80" y="110" font-family="Shippori Mincho,serif" font-size="12" fill="#1a3d1a" font-weight="700">福岡県</text>
+            <!-- 大分 -->
+            <path d="M170,75 Q220,55 265,95 Q275,145 240,175 Q190,180 170,145 Q160,110 170,75 Z"
+                  fill="#d8c89a" stroke="#a87a37" stroke-width="1.5"/>
+            <text x="208" y="120" font-family="Shippori Mincho,serif" font-size="12" fill="#5a3a10" font-weight="700">大分県</text>
+            <!-- pins -->
+            <circle cx="100" cy="115" r="4" fill="#d23c2e"/>
+            <circle cx="100" cy="115" r="10" fill="#d23c2e" opacity=".25"/>
+            <text x="80" y="138" font-family="Shippori Mincho,serif" font-size="9" fill="#1a2238" font-weight="700">行橋市</text>
+            <circle cx="220" cy="135" r="4" fill="#d23c2e"/>
+            <circle cx="220" cy="135" r="10" fill="#d23c2e" opacity=".25"/>
+            <text x="200" y="158" font-family="Shippori Mincho,serif" font-size="9" fill="#1a2238" font-weight="700">中津市</text>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="s">
+      <div><span class="sec-bar">よくあるご質問</span></div>
+      <div class="faq-grid">
+        <div>
+          <div class="faq-q"><span class="qm">Q.</span>見積もりは本当に無料ですか？</div>
+          <div class="faq-a">はい、現地調査・お見積もりは完全無料です。お見積もり後の追客電話なども一切いたしませんので、お気軽にどうぞ。</div>
+        </div>
+        <div>
+          <div class="faq-q"><span class="qm">Q.</span>どのくらいの期間で工事が終わりますか？</div>
+          <div class="faq-a">一般的な戸建で10〜14日間程度です。お家の状態・天候によって変動しますので、お見積もり時にご案内いたします。</div>
+        </div>
+        <div>
+          <div class="faq-q"><span class="qm">Q.</span>留守がちのため心配です。連絡はどうなりますか？</div>
+          <div class="faq-a">ご安心ください。LINEで毎日の進捗を写真付きで報告します。気になる点はその場でご返信いただけます。</div>
+        </div>
+        <div>
+          <div class="faq-q"><span class="qm">Q.</span>ご近所への挨拶はどうしてくれますか？</div>
+          <div class="faq-a">施工前にこちらから両隣・お向かいへ責任を持ってご挨拶に伺います。安心してお任せください。</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:18px;">
+        <a href="#" class="btn-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する <span class="ribbon">24時間受付中</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Company -->
+    <section class="company">
+      <div class="brand">
+        <h4>小野塗装</h4>
+        <p>代表 ／ 小野 翔太（おの しょうた）</p>
+        <div class="photo-block">
+          <div class="av">
+            <svg viewBox="0 0 80 80" width="80" height="80"><rect width="80" height="80" fill="#cfd9e8"/><path d="M22,30 Q22,16 40,16 Q58,16 58,30 L58,38 H22 Z" fill="#f5f1e6"/><ellipse cx="40" cy="42" rx="14" ry="16" fill="#f1cfa5"/><path d="M28,30 Q30,22 40,22 Q50,22 52,30 L52,36 Q40,32 28,36 Z" fill="#2a2018"/><circle cx="35" cy="42" r="1.5" fill="#1a1410"/><circle cx="45" cy="42" r="1.5" fill="#1a1410"/><path d="M35,52 Q40,55 45,52" stroke="#7a4a2e" stroke-width="1" fill="none"/><path d="M14,80 Q14,62 40,58 Q66,62 66,80 Z" fill="#1a1814"/></svg>
+          </div>
+          <p class="desc">一人親方の塗装屋として、福岡・大分エリアで戸建ての外壁・屋根塗装を担当。15年以上の現場経験に裏打ちされた、誠実な仕事をお約束します。</p>
+        </div>
+      </div>
+      <div class="info">
+        <dl>
+          <dt>屋号</dt><dd>小野塗装</dd>
+          <dt>代表</dt><dd>小野 翔太</dd>
+          <dt>所在地</dt><dd>福岡県行橋市〇〇〇 1-2-3</dd>
+          <dt>TEL</dt><dd>090-XXXX-XXXX</dd>
+          <dt>営業時間</dt><dd>8:00 〜 19:00（日曜定休）</dd>
+          <dt>事業内容</dt><dd>外壁塗装・屋根塗装・付帯部塗装</dd>
+        </dl>
+        <div class="footer-cta">
+          <a href="#" class="btn-line" style="display:flex;width:100%;justify-content:center;">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+            LINEで無料相談する <span class="ribbon">24時間受付中</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="copy">© 2026 小野塗装  ALL RIGHTS RESERVED.</footer>
+  </main>
+
+  <!-- ===== SIDEBAR ===== -->
+  <aside class="side">
+    <div class="side-cta">
+      <div class="ttl">スマホで簡単！</div>
+      <a href="#" class="side-btn-line">
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する
+        </div>
+        <span class="badge">24時間受付中！</span>
       </a>
-      <div class="hero-note">
-        <span>返信24時間以内</span><span>しつこい営業なし</span><span>見積もり後キャンセルOK</span>
-      </div>
+      <p class="note">相談・見積もり・現地調査すべて無料！</p>
     </div>
-    <div class="hero-image-wrap">
-      <div class="hero-house-img">🏠</div>
-      <div class="hero-balloon">まずはお気軽にご相談ください！</div>
-    </div>
-  </div>
-</section>
 
-<section class="merit" id="merit">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">MERIT</div>
-      <h2 class="sec-title">外壁塗装で得られる<em>３つのメリット</em></h2>
-    </div>
-    <div class="merit-grid">
-      <div class="merit-card">
-        <div class="merit-num">01</div>
-        <div class="merit-icon">✨</div>
-        <h3>美観の向上</h3>
-        <p>汚れや色あせをリセットし、新築のような美しさに。近所からも褒められる外観に生まれ変わります。</p>
+    <div class="side-check">
+      <div class="lead">まずは劣化チェック！</div>
+      <h4>外壁・屋根の劣化サイン</h4>
+      <ul>
+        <li>チョーキング（白い粉）が手につく</li>
+        <li>ひび割れや色褪せが目立つ</li>
+        <li>コーキングの割れや隙間がある</li>
+        <li>カビ・コケ・藻が発生している</li>
+        <li>屋根の色あせやサビが目立ってきた</li>
+      </ul>
+      <div class="footer-msg">
+        1つでも当てはまる方は、<br>
+        <b>塗り替えのサイン</b>かもしれません。
       </div>
-      <div class="merit-card">
-        <div class="merit-num">02</div>
-        <div class="merit-icon">🛡️</div>
-        <h3>建物の保護</h3>
-        <p>塗膜が外壁を守り、雨風や紫外線から住まいを長持ちさせます。ひび割れや雨漏りの予防にも。</p>
-      </div>
-      <div class="merit-card">
-        <div class="merit-num">03</div>
-        <div class="merit-icon">🏡</div>
-        <h3>資産価値の維持</h3>
-        <p>定期的な塗り替えで住まいの資産価値をしっかり守ります。売却・相続にも有利に働きます。</p>
+      <div class="home-icon">
+        <svg width="40" height="32" viewBox="0 0 40 32"><path d="M4,16 L20,4 L36,16 V30 H4 Z" fill="#1f3756"/><rect x="17" y="20" width="6" height="10" fill="#fff"/><path d="M28,2 l1,2 l2,1 l-2,1 l-1,2 l-1,-2 l-2,-1 l2,-1 z" fill="#c89854"/></svg>
       </div>
     </div>
-  </div>
-</section>
 
-<section class="reason">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">REASON</div>
-      <h2 class="sec-title">小野塗装が<em>選ばれる理由</em></h2>
+    <div class="side-cta">
+      <div class="ttl">スマホで簡単！</div>
+      <a href="#" class="side-btn-line">
+        <div class="row">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+          LINEで無料相談する
+        </div>
+        <span class="badge">24時間受付中！</span>
+      </a>
+      <p class="note">相談・見積もり・現地調査すべて無料！</p>
     </div>
-    <div class="reason-grid">
-      <div class="reason-card"><div class="reason-icon">👷</div><h3>代表が直接施工<br>責任ある仕上がり</h3></div>
-      <div class="reason-card"><div class="reason-icon">💰</div><h3>中間マージンなし<br>適正価格で明朗会計</h3></div>
-      <div class="reason-card"><div class="reason-icon">🎨</div><h3>高品質な塗料を<br>ご提案</h3></div>
-      <div class="reason-card"><div class="reason-icon">📍</div><h3>地域密着で<br>迅速対応</h3></div>
-      <div class="reason-card"><div class="reason-icon">💬</div><h3>LINEで気軽に<br>相談できる</h3></div>
-    </div>
-  </div>
-</section>
+  </aside>
 
-<section class="flow" id="flow">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">FLOW</div>
-      <h2 class="sec-title">ご相談から<em>施工完了</em>までの流れ</h2>
-    </div>
-    <div class="flow-steps">
-      <div class="flow-step"><div class="flow-step-num">1</div><div class="flow-step-icon">💬</div><h3>LINEで相談</h3><p>写真を送るだけ。気軽にご相談ください</p></div>
-      <div class="flow-step"><div class="flow-step-num">2</div><div class="flow-step-icon">🔍</div><h3>現地調査・診断</h3><p>専門家が現地を確認。劣化状況を診断します</p></div>
-      <div class="flow-step"><div class="flow-step-num">3</div><div class="flow-step-icon">📋</div><h3>お見積もり提出</h3><p>費用の内訳を丁寧にご説明します</p></div>
-      <div class="flow-step"><div class="flow-step-num">4</div><div class="flow-step-icon">🤝</div><h3>ご契約</h3><p>納得されてからご契約。押し売り一切なし</p></div>
-      <div class="flow-step"><div class="flow-step-num">5</div><div class="flow-step-icon">🖌️</div><h3>施工</h3><p>代表が責任を持って丁寧に施工します</p></div>
-      <div class="flow-step"><div class="flow-step-num">6</div><div class="flow-step-icon">✅</div><h3>完了・アフター</h3><p>完了後も気になる点はいつでもご連絡を</p></div>
-    </div>
-    <p class="flow-note">※工事期間の目安：7〜14日程度（建物の大きさや天候により異なります）</p>
-  </div>
-</section>
+</div>
 
-<section class="voice">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">VOICE</div>
-      <h2 class="sec-title">お客様の<em>声</em></h2>
-    </div>
-    <div class="voice-grid">
-      <div class="voice-card">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-text">「新築のようにきれいになりました！近所の方からも声をかけていただいて本当に依頼して良かったです。丁寧な仕事ぶりに感動しました。」</p>
-        <div class="voice-author"><div class="voice-avatar">👨</div><div><div class="voice-name">行橋市 50代男性</div><div class="voice-area">外壁・屋根塗装</div></div></div>
-      </div>
-      <div class="voice-card">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-text">「ご近所から薦められて依頼しました。見積もりから施工まで丁寧に対応してくれて安心でした。価格も思ったより手頃で助かりました。」</p>
-        <div class="voice-author"><div class="voice-avatar">👩</div><div><div class="voice-name">中津市 60代女性</div><div class="voice-area">外壁塗装</div></div></div>
-      </div>
-      <div class="voice-card">
-        <div class="voice-stars">★★★★★</div>
-        <p class="voice-text">「代表の小野さんが直接来てくれて、最初から最後まで一人で丁寧に対応してくれました。LINEで気軽に相談できたのも良かったです。」</p>
-        <div class="voice-author"><div class="voice-avatar">👨</div><div><div class="voice-name">苅田町 40代男性</div><div class="voice-area">外壁・付帯部塗装</div></div></div>
-      </div>
-    </div>
-    <p style="text-align:center;font-size:.76rem;color:var(--text-light);margin-top:18px;">※個人の感想です。効果を保証するものではありません。</p>
-  </div>
-</section>
-
-<section class="area" id="area">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">AREA</div>
-      <h2 class="sec-title">対応<em>エリア</em></h2>
-    </div>
-    <div class="area-grid">
-      <span class="area-tag">福岡県 行橋市</span><span class="area-tag">福岡県 苅田町</span>
-      <span class="area-tag">福岡県 みやこ町</span><span class="area-tag">福岡県 築上町</span>
-      <span class="area-tag">福岡県 豊前市</span><span class="area-tag">福岡県 上毛町</span>
-      <span class="area-tag">福岡県 吉富町</span><span class="area-tag">大分県 中津市</span>
-      <span class="area-tag">大分県 宇佐市</span><span class="area-tag">大分県 豊後高田市</span>
-    </div>
-    <p class="area-note">※上記エリア外の方もまずはご相談ください</p>
-  </div>
-</section>
-
-<section class="faq" id="faq">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">FAQ</div>
-      <h2 class="sec-title">よくある<em>ご質問</em></h2>
-    </div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-label">Q</span>見積もりだけでもお願いできますか？</div>
-        <div class="faq-a">はい、もちろんです。見積もりのみのご依頼も大歓迎です。費用を確認してから検討していただいて問題ありません。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-label">Q</span>費用の目安はどのくらいですか？</div>
-        <div class="faq-a">建物の大きさや使用する塗料によって異なりますが、一般的な戸建て（30坪）の外壁塗装で90〜120万円前後が目安です。まずはお気軽にご相談ください。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-label">Q</span>工事中、家にいなくても大丈夫ですか？</div>
-        <div class="faq-a">はい、基本的に在宅は不要です。ただし工事開始日と完了日は立ち合いをお願いする場合があります。</div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q"><span class="faq-q-label">Q</span>外壁以外の施工もお願いできますか？</div>
-        <div class="faq-a">屋根塗装・ベランダ防水・付帯部（雨樋・軒天など）の塗装にも対応しています。まずはLINEでご相談ください。</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="final-cta">
-  <div class="container">
-    <h2>外壁の気になる箇所、<br>まずLINEで写真を送ってください</h2>
-    <p>無料で確認・アドバイスします。費用のご相談だけでも大歓迎です。</p>
-    <div class="cta-badges">
-      <span class="cta-badge">見積もり完全無料</span>
-      <span class="cta-badge">返信24時間以内</span>
-      <span class="cta-badge">しつこい営業なし</span>
-      <span class="cta-badge">キャンセルOK</span>
-    </div>
-    <a href="https://lin.ee/XXXXXXX" class="cta-line-btn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-      LINEで無料見積もりを依頼する
-    </a>
-  </div>
-</section>
-
-<section class="company" id="company">
-  <div class="container">
-    <div class="sec-header">
-      <div class="sec-label">COMPANY</div>
-      <h2 class="sec-title">会社<em>情報</em></h2>
-    </div>
-    <table class="company-table">
-      <tr><th>屋号</th><td>小野塗装</td></tr>
-      <tr><th>代表者</th><td>小野 翔太</td></tr>
-      <tr><th>住所</th><td>〒871-0802 福岡県築上郡吉富町大字小犬丸461-6</td></tr>
-      <tr><th>対応エリア</th><td>福岡県行橋市・苅田町・みやこ町・築上町・豊前市・上毛町・吉富町 / 大分県中津市・宇佐市・豊後高田市</td></tr>
-      <tr><th>お問い合わせ</th><td>LINEにてお気軽にご相談ください</td></tr>
-    </table>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-logo">
-        <strong>小野塗装</strong>
-        <small>〒871-0802 福岡県築上郡吉富町大字小犬丸461-6</small>
-      </div>
-      <div class="footer-links">
-        <a href="#merit">選ばれる理由</a>
-        <a href="#flow">施工の流れ</a>
-        <a href="#area">対応エリア</a>
-        <a href="#faq">よくある質問</a>
-        <a href="#company">会社情報</a>
-      </div>
-    </div>
-    <div class="footer-bottom"><p>© 2026 小野塗装 All Rights Reserved.</p></div>
-  </div>
-</footer>
-
-<a href="https://lin.ee/XXXXXXX" class="fixed-line-btn" target="_blank" rel="noopener">
-  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
-  LINEで無料見積もり
-</a>
+<div class="floating">
+  <a href="#">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.7 2 10.25c0 4.08 3.6 7.5 8.45 8.15.33.07.78.22.89.5.1.25.07.65.03.9l-.14.86c-.04.25-.2.99.87.54 1.07-.45 5.76-3.39 7.86-5.81C21.34 13.71 22 12.05 22 10.25 22 5.7 17.52 2 12 2z"/></svg>
+    LINEで相談
+  </a>
+</div>
 
 </body>
 </html>
