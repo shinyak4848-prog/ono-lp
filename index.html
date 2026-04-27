@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小野塗装｜地元密着の外壁塗装専門店【行橋・苅田・中津エリア】</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; line-height: 1.7; background: #fff; }
+    a { text-decoration: none; color: inherit; }
+    :root {
+      --blue: #1a6bb5; --blue-dark: #0f4f8c; --blue-light: #e8f2fc;
+      --orange: #f07800; --yellow: #ffc107;
+      --gray-bg: #f7f8fa; --gray-line: #e0e5eb;
+      --text: #333; --text-light: #666; --line-green: #06C755;
+    }
+    /* ヘッダー */
+    header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 3px solid var(--blue); box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 12px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .logo-wrap { display: flex; align-items: center; gap: 10px; }
+    .logo-icon { width: 44px; height: 44px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+    .logo-text small { font-size: .7rem; color: var(--text-light); display: block; }
+    .logo-text strong { font-size: 1.3rem; color: var(--blue); }
+    .header-nav { display: flex; gap: 20px; font-size: .85rem; }
+    .header-nav a { color: var(--text); font-weight: 500; }
+    .header-nav a:hover { color: var(--blue); }
+    .header-cta { background: var(--line-green); color: #fff; font-weight: bold; font-size: .9rem; padding: 12px 22px; border-radius: 6px; display: flex; align-items: center; gap: 8px; white-space: nowrap; box-shadow: 0 3px 10px rgba(6,199,85,0.35); transition: all .2s; }
+    .header-cta:hover { background: #05a847; transform: translateY(-1px); }
+    .header-cta svg { width: 20px; height: 20px; }
+    /* ヒーロー */
+    .hero { background: linear-gradient(135deg, #e8f2fc 0%, #f0f6ff 60%, #fff 100%); padding: 60px 24px 0; overflow: hidden; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .hero-text { padding-bottom: 60px; }
+    .hero-label { display: inline-block; background: var(--orange); color: #fff; font-size: .8rem; font-weight: bold; padding: 5px 16px; border-radius: 3px; margin-bottom: 20px; }
+    .hero-catch { font-size: clamp(1.5rem, 2.8vw, 2.2rem); font-weight: bold; line-height: 1.4; margin-bottom: 8px; color: #1a1a1a; }
+    .hero-catch em { color: var(--blue); font-style: normal; border-bottom: 4px solid var(--yellow); }
+    .hero-sub { color: var(--text-light); font-size: .95rem; margin-bottom: 24px; }
+    .hero-badges { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+    .hero-badge { background: #fff; border: 2px solid var(--blue-light); border-radius: 50px; padding: 7px 14px; font-size: .8rem; font-weight: bold; color: var(--blue); display: flex; align-items: center; gap: 5px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .line-cta-box { background: var(--line-green); border-radius: 10px; padding: 18px 22px; display: flex; align-items: center; gap: 14px; box-shadow: 0 4px 20px rgba(6,199,85,0.35); transition: all .2s; cursor: pointer; }
+    .line-cta-box:hover { background: #05a847; transform: translateY(-2px); }
+    .line-cta-box svg { width: 34px; height: 34px; flex-shrink: 0; }
+    .line-cta-text small { color: rgba(255,255,255,0.85); font-size: .72rem; display: block; }
+    .line-cta-text strong { color: #fff; font-size: 1.1rem; display: block; }
+    .line-cta-arrow { margin-left: auto; color: #fff; font-size: 1.6rem; font-weight: bold; }
+    .hero-note { font-size: .78rem; color: var(--text-light); margin-top: 10px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-note span::before { content: '✓ '; color: var(--line-green); font-weight: bold; }
+    .hero-image-wrap { border-radius: 16px 16px 0 0; overflow: hidden; box-shadow: 0 8px 40px rgba(26,107,181,0.2); position: relative; }
+    .hero-house-img { width: 100%; height: 420px; background: linear-gradient(160deg, #b8d4f0 0%, #7aaed8 40%, #4a8fc4 100%); display: flex; align-items: center; justify-content: center; font-size: 9rem; position: relative; }
+    .hero-house-img::after { content: '施工写真を配置'; position: absolute; bottom: 16px; right: 16px; background: rgba(0,0,0,0.4); color: #fff; font-size: .75rem; padding: 4px 10px; border-radius: 4px; }
+    .hero-balloon { position: absolute; top: 24px; left: 0; background: var(--orange); color: #fff; font-size: .82rem; font-weight: bold; padding: 8px 20px 8px 16px; border-radius: 0 24px 24px 0; }
+    /* 共通 */
+    section { padding: 72px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-header { text-align: center; margin-bottom: 48px; }
+    .sec-label { display: inline-block; color: var(--blue); font-size: .78rem; font-weight: bold; border-bottom: 2px solid var(--blue); padding-bottom: 2px; margin-bottom: 10px; letter-spacing: .12em; }
+    .sec-title { font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: bold; color: #1a1a1a; line-height: 1.4; }
+    .sec-title em { color: var(--blue); font-style: normal; }
+    /* メリット */
+    .merit { background: var(--gray-bg); }
+    .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .merit-card { background: #fff; border-radius: 12px; padding: 32px 24px; text-align: center; box-shadow: 0 2px 16px rgba(0,0,0,0.06); border-top: 4px solid var(--blue); transition: transform .2s, box-shadow .2s; }
+    .merit-card:hover { transform: translateY(-6px); box-shadow: 0 8px 30px rgba(26,107,181,0.15); }
+    .merit-num { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: var(--blue); color: #fff; font-size: 1.2rem; font-weight: bold; border-radius: 50%; margin-bottom: 14px; }
+    .merit-icon { font-size: 3.2rem; margin-bottom: 12px; }
+    .merit-card h3 { font-size: 1.05rem; color: var(--blue); font-weight: bold; margin-bottom: 10px; }
+    .merit-card p { font-size: .88rem; color: var(--text-light); }
+    /* 選ばれる理由 */
+    .reason { background: #fff; }
+    .reason-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .reason-card { text-align: center; padding: 24px 12px; border: 2px solid var(--gray-line); border-radius: 10px; transition: border-color .2s, box-shadow .2s; }
+    .reason-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(26,107,181,0.12); }
+    .reason-icon { font-size: 2.4rem; margin-bottom: 12px; }
+    .reason-card h3 { font-size: .84rem; font-weight: bold; color: var(--blue); line-height: 1.5; }
+    /* 施工の流れ */
+    .flow { background: var(--gray-bg); }
+    .flow-steps { display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; position: relative; }
+    .flow-steps::before { content: ''; position: absolute; top: 28px; left: 8%; right: 8%; height: 3px; background: var(--blue-light); z-index: 0; }
+    .flow-step { text-align: center; padding: 0 6px; position: relative; z-index: 1; }
+    .flow-step-num { width: 52px; height: 52px; border-radius: 50%; background: var(--blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; margin: 0 auto 10px; border: 4px solid #fff; box-shadow: 0 2px 10px rgba(26,107,181,0.3); }
+    .flow-step-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .flow-step h3 { font-size: .78rem; font-weight: bold; color: var(--blue); margin-bottom: 5px; }
+    .flow-step p { font-size: .7rem; color: var(--text-light); line-height: 1.5; }
+    .flow-note { text-align: center; margin-top: 24px; font-size: .82rem; color: var(--text-light); }
+    /* お客様の声 */
+    .voice { background: #fff; }
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .voice-card { background: var(--gray-bg); border-radius: 12px; padding: 24px; border-top: 4px solid var(--yellow); box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+    .voice-stars { color: var(--yellow); font-size: 1rem; margin-bottom: 10px; letter-spacing: 2px; }
+    .voice-text { font-size: .87rem; color: var(--text); margin-bottom: 16px; line-height: 1.75; }
+    .voice-author { display: flex; align-items: center; gap: 10px; }
+    .voice-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--blue-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .voice-name { font-size: .82rem; font-weight: bold; }
+    .voice-area { font-size: .74rem; color: var(--text-light); }
+    /* エリア */
+    .area { background: var(--gray-bg); }
+    .area-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
+    .area-tag { background: var(--blue); color: #fff; font-size: .88rem; font-weight: bold; padding: 8px 20px; border-radius: 50px; }
+    .area-note { text-align: center; color: var(--text-light); font-size: .82rem; }
+    /* FAQ */
+    .faq { background: #fff; }
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { background: var(--gray-bg); border-radius: 10px; overflow: hidden; }
+    .faq-q { padding: 18px 22px; font-weight: bold; display: flex; align-items: flex-start; gap: 12px; border-left: 4px solid var(--blue); background: #fff; }
+    .faq-q-label { background: var(--blue); color: #fff; width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .82rem; font-weight: bold; flex-shrink: 0; }
+    .faq-a { padding: 14px 22px 18px 62px; color: var(--text-light); font-size: .9rem; }
+    /* 最終CTA */
+    .final-cta { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); text-align: center; padding: 72px 24px; }
+    .final-cta h2 { color: #fff; font-size: clamp(1.3rem, 2.5vw, 1.9rem); margin-bottom: 10px; }
+    .final-cta p { color: rgba(255,255,255,0.8); margin-bottom: 28px; }
+    .cta-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+    .cta-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: .84rem; padding: 7px 18px; border-radius: 50px; }
+    .cta-badge::before { content: '✓ '; color: var(--line-green); font-weight: bold; }
+    .cta-line-btn { display: inline-flex; align-items: center; gap: 12px; background: var(--line-green); color: #fff; font-size: 1.15rem; font-weight: bold; padding: 20px 48px; border-radius: 50px; box-shadow: 0 6px 24px rgba(6,199,85,0.5); transition: all .2s; }
+    .cta-line-btn:hover { background: #05a847; transform: translateY(-3px); }
+    .cta-line-btn svg { width: 28px; height: 28px; }
+    /* 会社情報 */
+    .company { background: var(--gray-bg); }
+    .company-table { width: 100%; max-width: 640px; margin: 0 auto; border-collapse: collapse; }
+    .company-table th, .company-table td { padding: 14px 18px; border-bottom: 1px solid var(--gray-line); text-align: left; font-size: .92rem; }
+    .company-table th { color: var(--blue); font-weight: bold; width: 130px; white-space: nowrap; }
+    /* フッター */
+    footer { background: #1a1a2e; color: rgba(255,255,255,0.55); padding: 40px 24px 24px; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 24px; margin-bottom: 28px; }
+    .footer-logo strong { color: #fff; font-size: 1.15rem; }
+    .footer-logo small { color: rgba(255,255,255,0.35); font-size: .76rem; display: block; margin-top: 4px; }
+    .footer-links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer-links a { color: rgba(255,255,255,0.45); font-size: .82rem; }
+    .footer-links a:hover { color: #fff; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 18px; text-align: center; font-size: .76rem; }
+    /* 固定LINEボタン */
+    .fixed-line-btn { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 200; background: var(--line-green); color: #fff; font-weight: bold; font-size: .95rem; padding: 14px 28px; border-radius: 50px; display: flex; align-items: center; gap: 9px; box-shadow: 0 4px 24px rgba(6,199,85,0.5); white-space: nowrap; transition: all .2s; }
+    .fixed-line-btn:hover { background: #05a847; transform: translateX(-50%) translateY(-2px); }
+    .fixed-line-btn svg { width: 22px; height: 22px; }
+    /* レスポンシブ */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-image-wrap { display: none; }
+      .hero-text { padding-bottom: 40px; }
+      .merit-grid, .voice-grid { grid-template-columns: 1fr; }
+      .reason-grid { grid-template-columns: repeat(3, 1fr); }
+      .flow-steps { grid-template-columns: repeat(3, 1fr); }
+      .flow-steps::before { display: none; }
+      .header-nav { display: none; }
+    }
+    @media (max-width: 600px) {
+      .reason-grid { grid-template-columns: repeat(2, 1fr); }
+      .flow-steps { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <div class="logo-icon">🏠</div>
+      <div class="logo-text">
+        <small>住まいの塗り替え専門店</small>
+        <strong>小野塗装</strong>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="#merit">選ばれる理由</a>
+      <a href="#flow">施工の流れ</a>
+      <a href="#area">対応エリア</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#company">会社情報</a>
+    </nav>
+    <a href="https://lin.ee/XXXXXXX" class="header-cta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      無料相談はこちら
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-label">📍 行橋・苅田・中津エリア 地元密着</div>
+      <h1 class="hero-catch">その「汚れや色あせ」、<br><em>塗り替えのサインです！</em></h1>
+      <p class="hero-sub">外壁の塗り替えで、住まいは新築のように美しく。<br>大切なご家族と暮らしを長く守ります。</p>
+      <div class="hero-badges">
+        <div class="hero-badge"><span>🏠</span>戸建て塗装専門</div>
+        <div class="hero-badge"><span>👷</span>代表直接施工</div>
+        <div class="hero-badge"><span>📋</span>お見積もり無料</div>
+      </div>
+      <a href="https://lin.ee/XXXXXXX" class="line-cta-box" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="#fff"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+        <div class="line-cta-text">
+          <small>無料 外壁診断・お見積もりはこちら</small>
+          <strong>LINEで無料見積もりを依頼する</strong>
+        </div>
+        <div class="line-cta-arrow">›</div>
+      </a>
+      <div class="hero-note">
+        <span>返信24時間以内</span><span>しつこい営業なし</span><span>見積もり後キャンセルOK</span>
+      </div>
+    </div>
+    <div class="hero-image-wrap">
+      <div class="hero-house-img">🏠</div>
+      <div class="hero-balloon">まずはお気軽にご相談ください！</div>
+    </div>
+  </div>
+</section>
+
+<section class="merit" id="merit">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">MERIT</div>
+      <h2 class="sec-title">外壁塗装で得られる<em>３つのメリット</em></h2>
+    </div>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-num">01</div>
+        <div class="merit-icon">✨</div>
+        <h3>美観の向上</h3>
+        <p>汚れや色あせをリセットし、新築のような美しさに。近所からも褒められる外観に生まれ変わります。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-num">02</div>
+        <div class="merit-icon">🛡️</div>
+        <h3>建物の保護</h3>
+        <p>塗膜が外壁を守り、雨風や紫外線から住まいを長持ちさせます。ひび割れや雨漏りの予防にも。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-num">03</div>
+        <div class="merit-icon">🏡</div>
+        <h3>資産価値の維持</h3>
+        <p>定期的な塗り替えで住まいの資産価値をしっかり守ります。売却・相続にも有利に働きます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reason">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">REASON</div>
+      <h2 class="sec-title">小野塗装が<em>選ばれる理由</em></h2>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-card"><div class="reason-icon">👷</div><h3>代表が直接施工<br>責任ある仕上がり</h3></div>
+      <div class="reason-card"><div class="reason-icon">💰</div><h3>中間マージンなし<br>適正価格で明朗会計</h3></div>
+      <div class="reason-card"><div class="reason-icon">🎨</div><h3>高品質な塗料を<br>ご提案</h3></div>
+      <div class="reason-card"><div class="reason-icon">📍</div><h3>地域密着で<br>迅速対応</h3></div>
+      <div class="reason-card"><div class="reason-icon">💬</div><h3>LINEで気軽に<br>相談できる</h3></div>
+    </div>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">FLOW</div>
+      <h2 class="sec-title">ご相談から<em>施工完了</em>までの流れ</h2>
+    </div>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="flow-step-num">1</div><div class="flow-step-icon">💬</div><h3>LINEで相談</h3><p>写真を送るだけ。気軽にご相談ください</p></div>
+      <div class="flow-step"><div class="flow-step-num">2</div><div class="flow-step-icon">🔍</div><h3>現地調査・診断</h3><p>専門家が現地を確認。劣化状況を診断します</p></div>
+      <div class="flow-step"><div class="flow-step-num">3</div><div class="flow-step-icon">📋</div><h3>お見積もり提出</h3><p>費用の内訳を丁寧にご説明します</p></div>
+      <div class="flow-step"><div class="flow-step-num">4</div><div class="flow-step-icon">🤝</div><h3>ご契約</h3><p>納得されてからご契約。押し売り一切なし</p></div>
+      <div class="flow-step"><div class="flow-step-num">5</div><div class="flow-step-icon">🖌️</div><h3>施工</h3><p>代表が責任を持って丁寧に施工します</p></div>
+      <div class="flow-step"><div class="flow-step-num">6</div><div class="flow-step-icon">✅</div><h3>完了・アフター</h3><p>完了後も気になる点はいつでもご連絡を</p></div>
+    </div>
+    <p class="flow-note">※工事期間の目安：7〜14日程度（建物の大きさや天候により異なります）</p>
+  </div>
+</section>
+
+<section class="voice">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">VOICE</div>
+      <h2 class="sec-title">お客様の<em>声</em></h2>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">「新築のようにきれいになりました！近所の方からも声をかけていただいて本当に依頼して良かったです。丁寧な仕事ぶりに感動しました。」</p>
+        <div class="voice-author"><div class="voice-avatar">👨</div><div><div class="voice-name">行橋市 50代男性</div><div class="voice-area">外壁・屋根塗装</div></div></div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">「ご近所から薦められて依頼しました。見積もりから施工まで丁寧に対応してくれて安心でした。価格も思ったより手頃で助かりました。」</p>
+        <div class="voice-author"><div class="voice-avatar">👩</div><div><div class="voice-name">中津市 60代女性</div><div class="voice-area">外壁塗装</div></div></div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">「代表の小野さんが直接来てくれて、最初から最後まで一人で丁寧に対応してくれました。LINEで気軽に相談できたのも良かったです。」</p>
+        <div class="voice-author"><div class="voice-avatar">👨</div><div><div class="voice-name">苅田町 40代男性</div><div class="voice-area">外壁・付帯部塗装</div></div></div>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.76rem;color:var(--text-light);margin-top:18px;">※個人の感想です。効果を保証するものではありません。</p>
+  </div>
+</section>
+
+<section class="area" id="area">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">AREA</div>
+      <h2 class="sec-title">対応<em>エリア</em></h2>
+    </div>
+    <div class="area-grid">
+      <span class="area-tag">福岡県 行橋市</span><span class="area-tag">福岡県 苅田町</span>
+      <span class="area-tag">福岡県 みやこ町</span><span class="area-tag">福岡県 築上町</span>
+      <span class="area-tag">福岡県 豊前市</span><span class="area-tag">福岡県 上毛町</span>
+      <span class="area-tag">福岡県 吉富町</span><span class="area-tag">大分県 中津市</span>
+      <span class="area-tag">大分県 宇佐市</span><span class="area-tag">大分県 豊後高田市</span>
+    </div>
+    <p class="area-note">※上記エリア外の方もまずはご相談ください</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">FAQ</div>
+      <h2 class="sec-title">よくある<em>ご質問</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-label">Q</span>見積もりだけでもお願いできますか？</div>
+        <div class="faq-a">はい、もちろんです。見積もりのみのご依頼も大歓迎です。費用を確認してから検討していただいて問題ありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-label">Q</span>費用の目安はどのくらいですか？</div>
+        <div class="faq-a">建物の大きさや使用する塗料によって異なりますが、一般的な戸建て（30坪）の外壁塗装で90〜120万円前後が目安です。まずはお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-label">Q</span>工事中、家にいなくても大丈夫ですか？</div>
+        <div class="faq-a">はい、基本的に在宅は不要です。ただし工事開始日と完了日は立ち合いをお願いする場合があります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-label">Q</span>外壁以外の施工もお願いできますか？</div>
+        <div class="faq-a">屋根塗装・ベランダ防水・付帯部（雨樋・軒天など）の塗装にも対応しています。まずはLINEでご相談ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>外壁の気になる箇所、<br>まずLINEで写真を送ってください</h2>
+    <p>無料で確認・アドバイスします。費用のご相談だけでも大歓迎です。</p>
+    <div class="cta-badges">
+      <span class="cta-badge">見積もり完全無料</span>
+      <span class="cta-badge">返信24時間以内</span>
+      <span class="cta-badge">しつこい営業なし</span>
+      <span class="cta-badge">キャンセルOK</span>
+    </div>
+    <a href="https://lin.ee/XXXXXXX" class="cta-line-btn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで無料見積もりを依頼する
+    </a>
+  </div>
+</section>
+
+<section class="company" id="company">
+  <div class="container">
+    <div class="sec-header">
+      <div class="sec-label">COMPANY</div>
+      <h2 class="sec-title">会社<em>情報</em></h2>
+    </div>
+    <table class="company-table">
+      <tr><th>屋号</th><td>小野塗装</td></tr>
+      <tr><th>代表者</th><td>小野 翔太</td></tr>
+      <tr><th>住所</th><td>〒871-0802 福岡県築上郡吉富町大字小犬丸461-6</td></tr>
+      <tr><th>対応エリア</th><td>福岡県行橋市・苅田町・みやこ町・築上町・豊前市・上毛町・吉富町 / 大分県中津市・宇佐市・豊後高田市</td></tr>
+      <tr><th>お問い合わせ</th><td>LINEにてお気軽にご相談ください</td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        <strong>小野塗装</strong>
+        <small>〒871-0802 福岡県築上郡吉富町大字小犬丸461-6</small>
+      </div>
+      <div class="footer-links">
+        <a href="#merit">選ばれる理由</a>
+        <a href="#flow">施工の流れ</a>
+        <a href="#area">対応エリア</a>
+        <a href="#faq">よくある質問</a>
+        <a href="#company">会社情報</a>
+      </div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 小野塗装 All Rights Reserved.</p></div>
+  </div>
+</footer>
+
+<a href="https://lin.ee/XXXXXXX" class="fixed-line-btn" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.630 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.630 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.630-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.630v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.630v4.141h1.756c.348 0 .629.283.629.630 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.070 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+  LINEで無料見積もり
+</a>
+
+</body>
+</html>
